@@ -37,9 +37,19 @@ The number of elements greater than x will be at least:
 Similarly, at least $\frac{n}{3} - 4$. So the SELECT function will call itself recursively on step 5 on sub-problems of size (at most): $\frac{2n}{3} + 4$.\\
 We get the following recurrence relation:
 \begin{equation*}
-	T(n) = T(\lceil \frac{n}{3} \rceil) + T(\frac{2n}{3} + 4) + O(n)
+	T(n) \leq T(\lceil \frac{n}{3} \rceil) + T(\frac{2n}{3} + 4) + O(n)
 \end{equation*}
-We assume that $T(n) > cn$ and $O(n) <= an$:
-
-
-	
+We assume that $T(n) \geq cnlogn$ and bound O(n) with an.
+\begin{equation*}
+	T(n) >=  T(\lceil \frac{n}{3} \rceil) + T(\frac{2n}{3} + 4) + an
+\end{equation*}
+\begin{equation*}
+	= c(\frac{n}{3})log(\frac{n}{3}) + cnlogn+ c(\frac{2n}{3})log(\frac{n}{3}) + an
+\end{equation*}
+\begin{equation*}
+	= c(\frac{n}{3})log(\frac{n}{3}) + cnlogn+ c(\frac{2n}{3})log(\frac{n}{3}) + an
+\end{equation*}
+\begin{equation*}
+	T(n) \geq 2cnlogn + an 
+\end{equation*}	
+We have demonstrated that  $T(n) = \Omega(nlogn)$.
