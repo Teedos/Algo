@@ -1,0 +1,89 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{lmodern}
+\usepackage{algpseudocode}
+
+\title{Algorithms Homework- week 9}
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+\author{
+	Massimo Hong\\
+	Student id: 2020280082\\
+ } 
+
+\begin{document}
+
+\maketitle
+\section*{1}
+The run time complexity of the algorithm is $log(n)$, given that $m = n$.
+We only need to consider the operations inside the while loops, as the others cost 1.
+\begin{itemize}
+	\item The outer loop ($m > 0$): can be executed a maximum of $C < m$ times.
+	\item The inner loop ($!(m\%2)$): can be run a maximum of $log(m = n)$ times.
+\end{itemize}
+We can conclude that an upper bound for the run time complexity is given by $Clog(n) = O(log(n))$, for $n > 0$.
+Of course, if $n= 0$, it will have a $O(1)$ cost.
+
+\section*{2}
+\begin{equation*}
+	2n^2 - 3n = O(n^2)
+\end{equation*}
+With $n \geq 0$ and $k = 1$:
+\begin{equation*}
+	\frac{f(n)}{g(n)} = \frac{2n^2 - 3n}{n^2} \leq \frac{2n^2}{n^2} = 2
+\end{equation*}
+$C = 2$
+\begin{equation*}
+	2n^2 - 3n \leq 2n^2 = O(n^2)
+\end{equation*}
+\section*{3}
+\begin{enumerate}
+	\item The input of the Majority Element problem is the same as the input of a Sorting problem: An array of elements.
+	\item We already know several algorithms to solve a sorting problem, i.e. Insertion sort, with a time complexity of $\theta(nlogn)$.
+	\item The output of the sorting problem is an ordered array A. The majority element (if it exists) is the element at the position of $\lfloor\frac{A.length}{2}\rfloor$.
+\end{enumerate}
+\section*{4}
+\begin{algorithmic}
+	\Procedure{Linear search}{$A, v$}
+		\For {$i = 1$ to $A.length$}
+			\If {A[i] == v}
+				\State \Return $i$
+			\EndIf
+		\EndFor
+		\State \Return NIL
+	\EndProcedure
+\end{algorithmic}
+Loop Invariant: At the start of the $\textbf{i}-th$ iteration, the sub array $A[1....i-1]$ does not contain v.\\
+Proof:\\
+Initialization\\
+At $i = 1$ we have an empty sub array, so the condition is obviously satisfied.\\
+Maintenance \\ 
+Suppose the invariant is satified at the start of the $i-th$ iteration, we can have:\\
+\begin{itemize} 
+	\item $A[i] = v$, A[i....i-1] does not contain v, and we can go to termination
+	\item  $A[i] \neq v$ , $A[1....i]$ does not contain v
+\end{itemize}
+Termination 
+\begin{itemize}
+	\item $A[i] = v$, $A[1....i-1]$ does not contain v, termination
+	\item We got to $i = A .length + 1$ and didn't find v. $A[1.....A.length]$ does not have v and the procedure returns NIL, termination.
+\end{itemize}
+\end{document}
