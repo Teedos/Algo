@@ -1,0 +1,45 @@
+\subsection*{Groups of 7}
+The number of elements greater than x will be at least:
+\begin{equation*}
+	4(\lceil \frac{1}{2} \lceil \frac{n}{7} \rceil \rceil -2) \geq \frac{2n}{7} - 8
+\end{equation*}
+Similarly, at least $\frac{2n}{7} - 8$. So the SELECT function will call itself recursively on step 5 on sub-problems of size (at most): $\frac{5n}{7} + 8$.\\
+
+So we get the recurrence relation:
+\begin{equation*}
+	T(n) \leq \begin{cases} O(1), & if n \leq n_0\\ T(\lceil \frac{n}{7} \rceil) + T(\frac{5n}{7} + 8) + O(n), &if n \geq n_0\end{cases}
+\end{equation*}
+We can determine an upper bound for: $T(n) \leq cn$  and $O(n) \leq an$
+\begin{equation*}
+	T(n) \leq c(\lceil \frac{n}{7} \rceil) + c(\frac{5n}{7} + 8) + an \leq \frac{cn}{7} + c + \frac{5cn}{7} + 8c + an
+\end{equation*}
+\begin{equation*}
+	= \frac{6cn}{7} + 9c + an
+\end{equation*}
+\begin{equation}\label{eq1}
+	= cn - \frac{cn}{7} + 9c + an \leq cn
+\end{equation}
+\begin{equation*}
+	= O(n)
+\end{equation*}
+Naturally, in order for \ref{eq1} to hold, we need $- \frac{cn}{7} + 9c + an \leq 0$.\\
+Getting:
+\begin{equation*}
+	c \geq \frac{7an}{n-63}
+\end{equation*}
+If we assume that $n \geq n_0 = 126$, we have $\frac{n}{n - 63} \leq 2$.\\
+So choosing $c \geq 14a$ will satisfy the inequality.
+\subsection*{Groups of 3}
+The number of elements greater than x will be at least:
+\begin{equation*}
+	2(\lceil \frac{1}{2} \lceil \frac{n}{7} \rceil \rceil -2) \geq \frac{n}{3} - 4
+\end{equation*}
+Similarly, at least $\frac{n}{3} - 4$. So the SELECT function will call itself recursively on step 5 on sub-problems of size (at most): $\frac{2n}{3} + 4$.\\
+We get the following recurrence relation:
+\begin{equation*}
+	T(n) = T(\lceil \frac{n}{3} \rceil) + T(\frac{2n}{3} + 4) + O(n)
+\end{equation*}
+We assume that $T(n) > cn$ and $O(n) <= an$:
+
+
+	

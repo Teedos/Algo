@@ -1,0 +1,35 @@
+\subsection*{2-1.a}
+Input size $= k$, worst-case time $= \Theta(k^2)$.\\
+If we need to sort the $\frac{n}{k}$ sublists, each of sike k, we will have:\\
+$\frac{n}{k}\Theta(k^2) = \Theta(nk)$
+\subsection*{2-1.b}
+We can merge 2 sublists (all sublists have size k) at a time until we get the fully sorted list of n.\\
+Because we are merging two sublists at a time and we have a total of $\frac{n}{k}$ sublists, we have to perform: $log(\frac{n}{k})$ steps.\\
+During each step we have to compare all the n elements. So the worst-case time will be $\Theta(nlog(\frac{n}{k}))$ .\\
+We can also see it as a tree structure. We have $\frac{n}{k}$ sublists, so the height of the tree will be $log(\frac{n}{k})$. In each level the merging costs $\Theta(n)$ (because we need to compare all n elements). So in total we have:  $\Theta(nlog(\frac{n}{k}))$ .
+\subsection*{2-1.c}
+Worst-case time of the modified algorithm is: $\Theta(nk + nlog(\frac{n}{k}))$. \\
+Worst-case time of standard merge sort is: $\Theta(nlogn)$.\\
+We need to find k such that:  $\Theta(nk + nlogn - nlogk)) = \Theta(nlogn)$\\
+In order for this equality to hold, k cannot grow faster than log(n) asymptotically, otherwise nk will run at a worse time compared to $\Theta(nlogn)$. We need to have: $k \leq \Theta(logn)$.\\
+Let's assume $k = \Theta(logn)$:
+\begin{equation*}
+	\Theta(nk + nlog(\frac{n}{k}) = \Theta(nlogn + nlogn - nlog(logn))
+\end{equation*}
+\begin{equation*}
+	= \Theta(2nlogn - nlog(logn))
+\end{equation*}
+$log(logn)$ is very small compared to log(n), and thus we can ignore it.
+\begin{equation*}
+	= \Theta(nlogn)
+\end{equation*}
+\subsection*{2-1.d}
+In practice, k is the biggest value of sublist length for which insertion sort is faster than merge sort.\\
+Worst-case for insersion sort: $C_1k^2$\\
+Worst-case for merge sort: $C_2klogk$
+\begin{equation*}
+	C_1k^2 < C_2klogk 
+\end{equation*}
+\begin{equation*}
+	k < \frac{C_2}{C_1}logk
+\end{equation*}
