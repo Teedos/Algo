@@ -1,62 +1,39 @@
-#include<iostream>
-#include <bits/stdc++.h>
+#include <vector>
+#include <iostream>
+#include <algorithm>
 using namespace std;
-
-int countRangeSum(int n, int nums[], int low, int up){
-    long sum[n+1];
-    for (int i = 0;i < n; i++){
-        sum[i+1] = sum[i] + nums[i];
+int mergeSort(vector<long>& sum, int lower, int upper, int low, int high)
+    {
+        if(high-low <= 1) return 0;
+        int mid = (low+high)/2, m = mid, n = mid, count =0;
+        count =mergeSort(sum,lower,upper,low,mid) +mergeSort(sum,lower,upper,mid,high);
+        for(int i =low; i< mid; i++)
+        {
+            while(m < high && sum[m] - sum[i] < lower) m++;
+            while(n < high && sum[n] - sum[i] <= upper) n++;
+            count += n - m;
+        }
+        inplace_merge(sum.begin()+low, sum.begin()+mid, sum.begin()+high);
+        return count;
     }
-    return mergeSort(sum, 0, n, low, up);
+
+int countRangeSum(vector<int>& nums, int lower, int upper) {
+    int len = nums.size();
+    vector<long> sum(len + 1, 0);
+    for(int i =0; i< len; i++) sum[i+1] = sum[i]+nums[i];
+    return mergeSort(sum, lower, upper, 0, len+1);
 }
 
-int mergeSort(long sum[], int start, int end, int low, int up){
-    if (start >= end)
-        return 0;
-    int middle = (end + 1 - start) / 2 + start;
-    int count = mergeSort(sum, start, middle -1, low, up) + mergeSort(sum, middle, end, low, up);
-    int startIndex = middle;
-    int endIndex = middle;
-    for(int i = start; i < middle; i++){
-        while(startIndex <= end && sum[startIndex] - sum[i] < low){
-            startIndex ++;
-        }
-        while(endIndex <= end && sum[endIndex] - sum[i] <= up){
-            endIndex ++;
-        }
-        count += endIndex - startIndex;
+int main(int argc, char* argv[]){
+    int n;
+    cin >> n;
+    int low, up;
+    cin >> low >> up;
+    vector<int> nums(n);
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+        nums[i] = x;
     }
-    merge(sum, start, middle -1, middle, end);
-    return count;
-}
-void merge(long sum[], int start1, int end1, int start2, int end2){
-    long temp[end2 - start1 +1];
-    int index = 0;
-    int index1 = start1;
-    int index2 = start2;
-    while(index1 <= end1 && index2 <= end2){
-        if(sum[index1] <= sum[index2]){
-            temp[index++] = sum[index1++];
-        }else{
-            temp[index++] = sum[index2++];
-        }
-    }
-
-    while(index1 <= end1){
-        temp[index++] = sum[index1++];
-    }
-    while(index2 <= end2){
-        temp[index++] = sum[index2++];
-    }
-}
-int main()
-{
-    int n, low, up;
-    cin >> n >> low >> up;
-    int nums[n];
-    for (int i= 0; i<n; i++){
-        cin >> nums[i];
-    }
-
-    return 0;
+    cout << countRangeSum(nums,  low, up);
 }
