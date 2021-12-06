@@ -1,0 +1,12 @@
+X = number of ball tossed until success (two balls in a bin)\\
+\begin{equation*}
+    E[X] = \sum_{i = 2}^{b + 1}iP(X = i)
+\end{equation*}
+If we are at step i means that the previous i - 1 tries have failed.\\
+\begin{equation*}
+    P(X = i) = 1(\frac{b -1 }{b})(\frac{b - 2}{b})...(\frac{b - i + 2}{b})(\frac{i - 1}{b})
+\end{equation*}
+So we have:
+\begin{equation*}
+    E[X] = \sum_{i = 2}^{b + 1}i(\frac{b -1 }{b})(\frac{b - 2}{b})...(\frac{b - i + 2}{b})(\frac{i - 1}{b})
+\end{equation*}

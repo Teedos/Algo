@@ -1,0 +1,22 @@
+\subsection*{h}
+$X_i$ indicates that the ith element is a match.\\
+Y indicates a match after the $n - k + 1$ element.
+\begin{equation*}
+    E[X] = E[X_1 + X_2 + ... + X_{n - k} + Y]
+\end{equation*}
+\begin{equation*}
+    = 1 + \sum_{i = 1}^{n - k}E[x_i] = 1 + \frac{n - k}{k + 1}
+\end{equation*}
+\begin{equation*}
+    = \frac{n + 1}{k + 1}
+\end{equation*}
+with $k = 1$:
+\begin{equation*}
+    E[X] = \frac{n + 1}{2}
+\end{equation*}
+
+The worst case with $k = 1$ is: $n - k + 1 = n$
+To all these solutions we need to add the time needed to randomize the input array.
+\subsection{i}
+The preferred way is to use deterministic-search because it has a better expected running time and it is guaranteed to terminate after n iterations.\\
+It takes a linear time to permute the array for the scramble-search. We can use this time to perform a linear search.

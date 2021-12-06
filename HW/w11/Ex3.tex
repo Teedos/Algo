@@ -1,0 +1,8 @@
+\begin{equation*}
+    r_i = \sqrt{\frac{i}{n}}
+\end{equation*}
+We partition the disk into n parts with the same area and use them as buckets.
+\begin{equation*}
+    c_i = {(x, y) | r_{i - 1} \leq x^2 + y^2 \leq r_i}, for i = 1....n
+\end{equation*}
+Because each $c_i$ has the same area and the points are uniformly distributed, the expected running time is: \Theta(n).
