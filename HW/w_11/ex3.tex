@@ -1,0 +1,40 @@
+\subsection*{b}
+\subsubsection*{1}
+
+\begin{equation*}
+	T(n) = 2T(\frac{n}{2}) + cn 
+\end{equation*}
+$a = 2$, $b = 2$, $f(n) = cn$.\\
+\begin{equation*}
+	n^{log{b}a} = n
+\end{equation*}
+We have $fn = cn$, so for the second case of the master theorem:
+\begin{equation*}
+	T(n) =\Theta(nlogn)
+\end{equation*}
+
+\subsubsection*{2}
+We assume N = n.
+\begin{equation*}
+	T(n) = 2T(\frac{n}{2}) + cn +2\Theta(n) = 4n + cn + 2c(\frac{n}{2}) + 4T(\frac{n}{4}) =
+\end{equation*}
+We can apply the geometric series:
+\begin{equation*}
+	= \sum_{i = 0}^{logn -1}(cn + 2^in) = cnlogn + n\frac{1 - 2^{logn} }{1 - 2} = cnlogn + n^2 - n =
+\end{equation*}
+\begin{equation*}
+	= \Theta(n^2)
+\end{equation*}
+
+\subsubsection*{3}
+\begin{equation*}
+	T(n) = 2T(\frac{n}{2}) + cn  + n = 2T(\frac{n}{2} + (c + 1)n
+\end{equation*}
+$a = 2$, $b = 2$, $f(n) = (c + 1)n$.\\
+\begin{equation*}
+	n^{log{b}a} = n
+\end{equation*}
+We have $fn = (c + 1 )n$, so for the second case of the master theorem:
+\begin{equation*}
+	T(n) =\Theta(nlogn)
+\end{equation*}

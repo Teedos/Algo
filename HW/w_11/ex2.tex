@@ -1,0 +1,41 @@
+\subsection*{b}
+\begin{equation*}
+	T(n) = T(\frac{7n}{10}) + n
+\end{equation*}
+$a = 1$, $b = \frac{10}{7}$, $f(n) = n$.
+\begin{equation*}
+	n^{log_ba} = n^0
+\end{equation*}
+$ f(n) = n^{0 + \epsilon}$. With $\epsilon = 1$ we have $f(n) = \Omega(n^{0 + \epsilon})$. f(n) grows polinomially faster than $n^0$.\\
+For case 3 of the master theorem:
+\begin{equation*}
+	T(n) = \Theta(n)
+\end{equation*}
+
+\subsection*{c}
+\begin{equation*}
+	T(n) =16T(\frac{n}{4}) + n^2
+\end{equation*}
+$a = 16$, $b = 4$, $f(n) = n^2$.
+\begin{equation*}
+	n^{log_ba} = n^{log_{4}16} = n^2
+\end{equation*}
+We have $f(n) = n^{log_ba}$, they grow at similar rates.\\
+For case 2 of the master theorem:
+\begin{equation*}
+	T(n) = \Theta(n^2logn)
+\end{equation*}
+
+\subsection*{d}
+\begin{equation*}
+	T(n) = 7T(\frac{n}{3}) + n^2
+\end{equation*}
+$a = 7$, $b = 3$, $f(n) = n^2$.
+\begin{equation*}
+	n^{log_ba} = n^{log_{3}7}
+\end{equation*}
+$ f(n) = n^{0 + \epsilon}$. With $\epsilon = 2 -  n^{log_{3}7} $ we have $f(n) = \Omega(n^{log_{3}7 + \epsilon})$. f(n) grows polinomially faster than $n^{log_{3}7}$.\\
+For case 3 of the master theorem:
+\begin{equation*}
+	T(n) = \Theta(n^2)
+\end{equation*}
